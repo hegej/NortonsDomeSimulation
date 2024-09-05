@@ -10,11 +10,11 @@ builder.Services.AddScoped<INortonDomeService, NortonsDomeService>();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowVueApp", builder =>
+    options.AddPolicy("VueFrontend", policy =>
     {
-        builder.WithOrigins("http://localhost:7076")
-               .AllowAnyHeader()
-               .AllowAnyMethod();
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
 });
 
@@ -28,7 +28,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowVueApp");
+app.UseCors("VueFrontend");
 app.UseAuthorization();
 
 app.MapControllers();
