@@ -8,7 +8,10 @@
       <input id="step" v-model.number="step" type="number" step="0.01" min="0.01" />
       <button @click="runSimulation">Run Simulation</button>
     </div>
+
     <LineChart v-if="chartData" :chart-data="chartData" :options="chartOptions" />
+
+    <NortonsDome3D />
   </div>
 </template>
 
@@ -26,11 +29,12 @@ import {
   PointElement,
   CategoryScale
 } from 'chart.js'
+import NortonsDome3D from './NortonsDome3D.vue'
 
 ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale, PointElement, CategoryScale)
 
 export default {
-  components: { LineChart },
+  components: { LineChart, NortonsDome3D },
   setup() {
     const duration = ref(10)
     const step = ref(0.1)
