@@ -9,7 +9,7 @@
       <button @click="runSimulation">Run Simulation</button>
     </div>
 
-    <LineChart v-if="chartData" :chart-data="chartData" :options="chartOptions" />
+    <Line v-if="chartData" :chart-data="chartData" :options="chartOptions" />
 
     <NortonsDome3D />
   </div>
